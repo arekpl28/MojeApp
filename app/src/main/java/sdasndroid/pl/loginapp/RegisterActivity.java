@@ -22,11 +22,9 @@ public class RegisterActivity extends AppCompatActivity {
         Pass = (EditText) findViewById(R.id.reg_password);
         ConPass = (EditText) findViewById(R.id.reg_con_password);
         reg_button = (Button) findViewById(R.id.reg_button);
-        reg_button.setOnClickListener(new View.OnClickListener()
-        {
+        reg_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 if (Name.getText().toString().equals("")
                         || Email.getText().toString().equals("")
                         || Pass.getText().toString().equals(""))
@@ -34,18 +32,15 @@ public class RegisterActivity extends AppCompatActivity {
                     builder = new AlertDialog.Builder(RegisterActivity.this);
                     builder.setTitle("Something went wrong");
                     builder.setMessage("Please fill all the fields..");
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener()
-                    {
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which)
-                        {
+                        public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
                         }
                     });
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-                } else if (!(Pass.getText().toString().equals(ConPass.getText().toString())))
-                {
+                } else if (!(Pass.getText().toString().equals(ConPass.getText().toString()))) {
                     builder = new AlertDialog.Builder(RegisterActivity.this);
                     builder.setTitle("Something went wrong");
                     builder.setMessage("Your password are not matching!!");
@@ -59,8 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                     });
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-                } else
-                {
+                } else {
                     BackgroundTask backgroundTask = new BackgroundTask(RegisterActivity.this);
                     backgroundTask.execute("register", Name.getText().toString(), Email.getText().toString(), Pass.getText().toString());
                 }

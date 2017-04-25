@@ -1,115 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="sdasndroid.pl.loginapp.RegisterActivity">
 
-    <TextView
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="50dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="@string/prompt_name"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:ignore="RtlHardcoded" />
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/reg_name"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tx1"
-            android:inputType=""
-            tools:ignore="LabelFor" />
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="50dp">
 
-        <TextView
-            android:id="@+id/tx2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/reg_name"
-            android:layout_marginTop="10dp"
-            android:text="@string/prompt_email"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:ignore="RtlHardcoded" />
+            <TextView
+                android:id="@+id/tx1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/prompt_name"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                tools:ignore="RtlHardcoded" />
 
-        <EditText
-            android:id="@+id/reg_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tx2"
-            android:inputType="textEmailAddress"
-            tools:ignore="LabelFor" />
+            <EditText
+                android:id="@+id/reg_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tx1" />
 
-        <TextView
-            android:id="@+id/tx3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/reg_email"
-            android:layout_marginTop="10dp"
-            android:text="@string/prompt_password"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:ignore="RtlHardcoded" />
+            <TextView
+                android:id="@+id/tx2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/reg_name"
+                android:layout_marginTop="10dp"
+                android:text="@string/prompt_email"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                tools:ignore="RtlHardcoded" />
 
-        <EditText
-            android:id="@+id/reg_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tx3"
-            android:inputType="textPassword"
-            tools:ignore="LabelFor" />
+            <EditText
+                android:id="@+id/reg_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tx2"
+                android:inputType="textEmailAddress" />
 
-        <TextView
-            android:id="@+id/tx4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/reg_password"
-            android:layout_marginTop="10dp"
-            android:text="@string/prompt_con_password"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:ignore="RtlHardcoded" />
+            <TextView
+                android:id="@+id/tx3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/reg_email"
+                android:layout_marginTop="10dp"
+                android:text="@string/prompt_password"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/reg_con_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tx4"
-            android:inputType="textPassword"
-            tools:ignore="LabelFor" />
+            <EditText
+                android:id="@+id/reg_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tx3"
+                android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/reg_button"
-            style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/reg_con_password"
-            android:layout_marginTop="25dp"
-            android:text="@string/reg_bn_label"
-            android:textStyle="bold"
-            />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tx4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/reg_password"
+                android:layout_marginTop="10dp"
+                android:text="@string/prompt_con_password"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-</LinearLayout>
+            <EditText
+                android:id="@+id/reg_con_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tx4"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/reg_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reg_con_password"
+                android:layout_marginTop="25dp"
+                android:text="@string/reg_bn_label"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -31,7 +31,7 @@ import java.net.URLEncoder;
 
 public class BackgroundTask extends AsyncTask<String, Void, String> {
     String register_url = "http://10.0.2.2/loginapp/register.php";
-    String login_url = "http://10.0.2.2/loginapp/login.php";
+    String login_url = "http://fly-ciolek.rhcloud.com/login";
     Context ctx;
     ProgressDialog progressDialog;
     Activity activity;
@@ -40,7 +40,6 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     public BackgroundTask(Context ctx) {
         this.ctx = ctx;
         activity = (Activity) ctx;
-
     }
 
     @Override
@@ -52,7 +51,6 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
         progressDialog.show();
-
     }
 
     @Override
@@ -101,6 +99,9 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             }
         } else if (method.equals("login")) {
             try {
+                String email, password;
+                email = params[1];
+                password = params[2];
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -108,9 +109,6 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String email, password;
-                email = params[1];
-                password = params[2];
                 String data = URLEncoder.encode("email", "UTF-8")
                         + "=" + URLEncoder.encode(email, "UTF-8")
                         + "&" + URLEncoder.encode("password", "UTF-8")
@@ -119,17 +117,18 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
-
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
                 StringBuilder stringBuilder = new StringBuilder();
                 String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     stringBuilder.append(line + "\n");
                 }
+                bufferedReader.close();
+                inputStream.close();
                 httpURLConnection.disconnect();
-                Thread.sleep(5000);
-                Log.d("Test", "Test 3 pass");
+//                Thread.sleep(5000);
+//                Log.d("Test", "Test 3 pass");
                 return stringBuilder.toString().trim();
 
             } catch (MalformedURLException e) {
@@ -140,8 +139,8 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
             }
         }
         return null;
@@ -171,7 +170,6 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 activity.startActivity(intent);
             } else if (code.equals("login_false")) {
                 showDialog("Login Error...", message, code);
-
             }
         } catch (JSONException e) {
             e.printStackTrace();

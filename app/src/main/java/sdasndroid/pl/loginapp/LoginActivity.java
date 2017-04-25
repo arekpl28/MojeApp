@@ -9,11 +9,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView signup_text;
-    EditText login, haslo;
+    private TextView signup_text;
+    private EditText login, haslo;
+    private Button loginButon;
+
+
     @BindView(R.id.login_button)
     protected Button clickButton;
 
@@ -21,20 +25,20 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        signup_text = (TextView)findViewById(R.id.sign_up);
+        login = (EditText) findViewById(R.id.email);
+        haslo = (EditText) findViewById(R.id.password);
+        ButterKnife.bind(this);
+        signup_text = (TextView) findViewById(R.id.sign_up);
         signup_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
-        login = (EditText) findViewById(R.id.email);
-        haslo = (EditText) findViewById(R.id.password);
-
     }
 
     @OnClick(R.id.login_button)
-    protected void zaloguj(){
+    protected void zaloguj() {
         String username = login.getText().toString();
         String password = haslo.getText().toString();
         String type = "login";
